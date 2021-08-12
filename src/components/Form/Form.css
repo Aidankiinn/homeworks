@@ -11,7 +11,13 @@
     width: 90%;
 }
 
-.btn-add {
+.btn-Add {
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+.btn-Delete {
     padding: 10px;
     cursor: pointer;
 }
