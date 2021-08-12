@@ -1,18 +1,18 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Form from "../Form/Form";
 
-class MovieForm extends Component {
-    render() {
-        const {addMovie, takeMovie} = this.props;
-        return <form onSubmit={addMovie}>
+const MovieForm = (props) => {
+    const {addMovie, takeMovie} = props;
+    return (
+        <form onSubmit={addMovie}>
             <Form
                 title="Add"
                 placeholder="Add movie"
                 type="submit"
                 onInputChange={takeMovie}
             />
-        </form>;
-    }
-}
+        </form>
+    );
+};
 
 export default MovieForm;
