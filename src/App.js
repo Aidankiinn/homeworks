@@ -1,8 +1,8 @@
 import React from 'react';
-import MovieBuilder from "./containers/MovieBuilder/MovieBuilder";
+import JokeBuilder from "./containers/JokeBuilder/JokeBuilder";
 
 const App = () => {
-    return <MovieBuilder/>;
+    return <JokeBuilder/>;
 };
 
 export default App;
