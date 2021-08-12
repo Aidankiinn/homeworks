@@ -2,19 +2,22 @@ import React, {Component} from 'react';
 import Form from "../Form/Form";
 
 class MovieList extends Component {
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('[Movie] ShouldUpdate');
+        return nextProps.title !== this.props.title;
+    }
+
     render() {
-        const {deleteMovie, editMovie, state} = this.props;
+        const {deleteMovie, editMovie, title} = this.props;
         return (
-            state.movie.map(movie => (
-                <Form
-                    value={movie.title}
-                    key={movie.id}
-                    type="button"
-                    title="Delete"
-                    onDelete={() => deleteMovie(movie.id)}
-                    onInputChange={(e) => {editMovie(movie.id, e.target.value)}}
-                />
-            ))
+            <Form
+                value={title}
+                type="button"
+                title="Delete"
+                onDelete={deleteMovie}
+                onInputChange={editMovie}
+            />
+
         );
     }
 }

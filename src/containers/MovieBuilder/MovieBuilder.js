@@ -58,7 +58,15 @@ class MovieBuilder extends Component {
             <div className="container">
                 <MovieForm addMovie={this.addMovie} takeMovie={(e) => this.takeMovie(e.target.value)}/>
                 <p>To watch list: </p>
-                {<MovieList deleteMovie={this.deleteMovie} editMovie={this.editMovie} state={this.state}/>}
+                {this.state.movie.map(m => {
+                    return <MovieList
+                        key={m.id}
+                        id={m.id}
+                        deleteMovie={() => this.deleteMovie(m.id)}
+                        editMovie={(e) => {this.editMovie(m.id, e.target.value)}}
+                        title={m.title}
+                    />
+                })}
             </div>
         );
     }
