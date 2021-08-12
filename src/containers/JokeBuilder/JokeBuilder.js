@@ -7,21 +7,21 @@ const url = 'https://api.chucknorris.io/jokes/random';
 const JokeBuilder = () => {
     const [jokes, setJokes] = useState([]);
 
-    const getJoke = () => {
-        const fetchData = async () => {
-            const response = await fetch(url);
+    const getJoke = async () => {
+        const response = await fetch(url);
 
-            if (response.ok) {
-                const posts = await response.json();
-                setJokes([...jokes, {value: posts.value, id: posts.id}]);
-            }
-        };
+        if (response.ok) {
 
-        fetchData().catch(e => console.error(e));
+            const posts = await response.json();
+            setJokes([...jokes, {value: posts.value, id: posts.id}]);
+        }
     };
 
     useEffect(() => {
-        getJoke();
+        const fetchData = async () => {
+            await getJoke();
+        };
+        fetchData().catch(e => console.error(e));
     }, []);
 
     return (
