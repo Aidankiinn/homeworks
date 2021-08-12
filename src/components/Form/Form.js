@@ -3,7 +3,7 @@ import "./Form.css";
 
 class Form extends Component {
     componentWillUnmount() {
-        console.log("Movie is deleted");
+        console.log("MovieForm is deleted");
     };
     render() {
         const {placeholder,value,type, title, onInputChange, onDelete} = this.props;

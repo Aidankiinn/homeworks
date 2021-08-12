@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import "./MovieBuilder.css";
-import Form from "../../components/Form/Form";
 import {nanoid} from "nanoid";
+import MovieForm from "../../components/MovieForm/MovieForm";
+import MovieList from "../../components/MovieList/MovieList";
 
 class MovieBuilder extends Component {
     state = {
@@ -9,14 +10,8 @@ class MovieBuilder extends Component {
         movieName: '',
     };
 
-    // shouldComponentUpdate(nextProps, nextState) {
-    //     console.log('[Post] ShouldUpdate');
-    //     return nextProps !== this.props.title ||
-    //         nextProps.id !== this.props.id;
-    // }
-
     componentWillUnmount() {
-        console.log("Movie part is not visible")
+        console.log("MovieForm part is not visible")
     }
 
     takeMovie = (e) => {
@@ -59,30 +54,11 @@ class MovieBuilder extends Component {
     }
 
     render() {
-        console.log(this.state);
         return (
             <div className="container">
-                <form onSubmit={this.addMovie}>
-                    <Form
-                        title="Add"
-                        placeholder="Add movie"
-                        type="submit"
-                        onInputChange={(e) => this.takeMovie(e.target.value)}
-                    />
-                </form>
+                <MovieForm addMovie={this.addMovie} takeMovie={(e) => this.takeMovie(e.target.value)}/>
                 <p>To watch list: </p>
-                {
-                    this.state.movie.map(movie => (
-                        <Form
-                            value={movie.title}
-                            key={movie.id}
-                            type="button"
-                            title="Delete"
-                            onDelete={() => this.deleteMovie(movie.id)}
-                            onInputChange={(e) => {this.editMovie(movie.id, e.target.value)}}
-                        />
-                    ))
-                }
+                {<MovieList deleteMovie={this.deleteMovie} editMovie={this.editMovie} state={this.state}/>}
             </div>
         );
     }
