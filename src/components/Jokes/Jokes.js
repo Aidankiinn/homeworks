@@ -5,7 +5,7 @@ const Jokes = ({jokes}) => {
         {
             jokes.map(joke => {
                 return (
-                    <div>
+                    <div key={joke.id}>
                         <p><strong>Joke ID id: {joke.id}</strong></p>
                         <hr/>
                         <p>Joke is: {joke.value}</p>
