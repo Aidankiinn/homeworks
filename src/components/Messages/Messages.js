@@ -4,11 +4,9 @@ import "./Messages.css";
 const Messages = (props) => {
     return (
         <div className="message">
-            <div>
-                Author: <h3>{props.author}</h3>
-                <div>Date: {props.date}</div>
-            </div>
-            <div style={{width: '40%'}}>Message: {props.message}</div>
+            Author: <h3 className="Author">{props.author}</h3>
+            Message: <div style={{fontSize: "20px", color: "red"}}>{props.message}</div>
+            <div style={{margin: "10px 0px"}}>Date: {props.date}</div>
             {props.children}
         </div>
     );
