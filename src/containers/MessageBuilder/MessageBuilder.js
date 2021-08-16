@@ -19,7 +19,6 @@ const MessageBuilder = () => {
                 const messages = await response.json();
                 setAllMessage(messages);
                 lastDate = messages[messages.length - 1].datetime;
-                console.log(messages);
             } else {
                 const error = (response && response.message) || response.statusText;
                 return Promise.reject(error);
@@ -35,7 +34,9 @@ const MessageBuilder = () => {
                 const message = await responses.json();
 
                 if (message.length !== 0) {
-                    setAllMessage(prev => [...prev, message]);
+                    for (let i = 0; i < message.length; i++) {
+                        setAllMessage(prev => [...prev, message[i]]);
+                    }
                     lastDate = message[message.length - 1].datetime;
                 }
             }
@@ -48,10 +49,9 @@ const MessageBuilder = () => {
         data.set('message', message);
         data.set('author', author);
 
-        const response = await fetch(url, {
+        await fetch(url, {
             method: 'post',
             body: data,
-            success: console.log('Sent!'),
         });
     };
 
