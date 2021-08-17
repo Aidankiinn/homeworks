@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import MovieBuilder from "./containers/MovieBuilder/MovieBuilder";
+import CountryBuilder from "./containers/CountryBuilder/CountryBuilder";
 
 
 class App extends Component {
     render() {
-        return <MovieBuilder/>;
+        return <CountryBuilder/>;
     }
 }
 
