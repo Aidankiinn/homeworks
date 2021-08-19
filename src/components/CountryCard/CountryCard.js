@@ -11,31 +11,29 @@ const CountryCard = ({code}) => {
         if (code === null) return setChooseCountry('Click on country');
 
         const response = await axios.get('alpha/' + code);
+        console.log(response);
         setAlpha3Code(response.data);
         setChooseCountry('');
-        const borderCodes = [];
 
-        borderCodes.push(response.data.borders[0]);
-        console.log(borderCodes);
+        const borderCodes = response.data.borders;
 
         const borderResponses = await Promise.all(borderCodes.map(borders => axios.get('alpha/' + borders)));
-        console.log(borderResponses);
-        // borderResponses.forEach(elem => {
-        //     setBorderNames(borderResponses[0].data.name);
-        // })
-        // console.log(borderNames)
 
+        const elem = [];
+        for (let i = 0; i < borderResponses.length; i++) {
+            elem.push(borderResponses[i].data.name)
+            setBorderNames(elem);
+        }
     }, [code]);
 
     useEffect(() => {
         fetchData().catch(console.error);
     }, [fetchData]);
 
-
-    const borders = (border) => {
+    const borders = () => {
         return (
             <ul>
-                {border.map(border => {
+                {borderNames.map(border => {
                     return <li key={border}>{border}</li>;
                 })}
             </ul>
@@ -50,7 +48,11 @@ const CountryCard = ({code}) => {
                 </div>
                 <p><strong>Capital: </strong> {alpha3Code.capital}</p>
                 <p><strong>Population: </strong> {alpha3Code.population}</p>
-                <div><strong>Borders with: </strong> {borders(alpha3Code.borders)}</div>
+                <div><strong>Borders with: </strong> <ul>
+                    {borderNames.map(border => {
+                        return <li key={border}>{border}</li>;
+                    })}
+                </ul></div>
             </div>
         </div>
     );
