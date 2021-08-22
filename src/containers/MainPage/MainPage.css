@@ -1,0 +1,18 @@
+.main-block {
+    background: #245963 url(../../assets/main-img-min.jpg) 50% no-repeat;
+}
+
+.main-btn {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translateX(50%);
+    padding: 20px 30px;
+    border: 2px solid white;
+    border-radius: 10px;
+    background: transparent;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+
+}
