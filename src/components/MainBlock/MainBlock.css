@@ -1,0 +1,27 @@
+.main-block {
+    padding: 113px 0 252px 0;
+}
+
+.main-block h1 {
+    color: #fff;
+    font-family: "Fjalla One", sans-serif;
+    font-size: 31px;
+    font-weight: normal;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+.main-block h1 span {
+    font-size: 21px;
+    display: block;
+    margin-top: 19px;
+}
+@media screen and (min-width: 720px) {
+    .main-block h1 span {
+        font-size: 31px;
+    }
+}
+@media screen and (min-width: 720px) {
+    .main-block h1 {
+        font-size: 41px;
+    }
+}

@@ -1,0 +1,80 @@
+
+.header {
+    background: rgba(41, 96, 107, 0.5);
+    border: 1px solid #2a6c78;
+    border-top: none;
+    padding: 21px 24px 22px 28px;
+}
+
+.logo {
+    text-decoration: none;
+    color: #fff;
+    font-family: "Fjalla One", sans-serif;
+    font-size: 25px;
+    font-weight: normal;
+}
+
+.main-nav {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.6s ease;
+    position: absolute;
+    top: 50px;
+    right: 40px;
+}
+@media screen and (min-width: 540px) {
+    .main-nav {
+        position: static;
+        display: block;
+        height: auto;
+        width: auto;
+        overflow: visible;
+    }
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+@media screen and (min-width: 540px) {
+    .main-nav ul {
+        margin: 3px 0 0 0;
+    }
+}
+
+.main-nav li {
+    background: #76b2be;
+    border-bottom: 1px solid #202729;
+    padding: 10px 30px;
+}
+.main-nav li:hover {
+    background: #1bbc9b;
+}
+@media screen and (min-width: 540px) {
+    .main-nav li {
+        display: inline-block;
+        margin: 0 10px 0 23px;
+        padding: 0;
+        border: none;
+        background: none;
+    }
+    .main-nav li:hover {
+        background: transparent;
+    }
+}
+.main-nav li button{
+    text-decoration: none;
+    font-size: 17px;
+    font-family: "Fjalla One", sans-serif;
+    color: #fff;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+@media screen and (min-width: 720px) {
+    .main-nav li button {
+        font-size: 17px;
+    }
+}
