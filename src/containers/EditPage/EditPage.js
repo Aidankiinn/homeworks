@@ -1,19 +1,26 @@
 import React, {useEffect, useState} from 'react';
 import axiosApi from "../../axiosApi";
 import "./EditPage.css";
+import {links} from "../../constants";
 
-const EditPage = ({match, history}) => {
-    const [pages, setPages] = useState([]);
+const EditPage = ({history}) => {
     const [data, setData] = useState({page: '', title: '', content: ''});
 
     useEffect(() => {
-        const fetchData = async () => {
-            const response = await axiosApi.get('/page.json');
-            setPages(Object.keys(response.data).map(item => (item.toUpperCase())));
-        };
-
-        fetchData().catch(console.error);
-    }, []);
+        if (data.page) {
+            const fetchData = async () => {
+                const response = await axiosApi.get('/page/' + data.page + '.json');
+                setData(prev => (
+                    {
+                        ...prev,
+                        title: response.data.title,
+                        content: response.data.content
+                    }
+                ));
+            };
+            fetchData().catch(console.error);
+        }
+    }, [data.page]);
 
     const dataChanged = e => {
         const name = e.target.name;
@@ -34,7 +41,7 @@ const EditPage = ({match, history}) => {
                 content: data.content,
             });
         } finally {
-            history.replace('/pages/' + data.page.toLowerCase());
+            history.replace('/page/' + data.page.toLowerCase());
         }
     };
 
@@ -43,7 +50,16 @@ const EditPage = ({match, history}) => {
             <form onSubmit={editData}>
                 <h1>Edit Pages</h1>
                 <label>Select page
-                    <select value={data.page} name="page" onChange={dataChanged}>{pages.map(item => (<option key={item}>{item}</option>))}</select>
+                    <select
+                        value={data.page}
+                        name="page"
+                        onChange={dataChanged}
+                    >{
+                        links.map(item => (
+                            <option key={item} value={item}>{item.toUpperCase()}
+                            </option>))
+                    }
+                    </select>
                 </label>
                 <label>Title
                     <input type="text" value={data.title} name="title" onChange={dataChanged}/>

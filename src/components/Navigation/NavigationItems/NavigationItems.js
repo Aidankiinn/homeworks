@@ -1,15 +1,15 @@
 import React from 'react';
 import "./NavigationItems.css";
 import {NavLink} from "react-router-dom";
+import {links} from "../../../constants";
 
 const NavigationItems = () => {
     return (
         <ul className="NavigationItems">
-            <li className="NavigationItem"><NavLink to="/pages/home" exact>Home</NavLink></li>
-            <li className="NavigationItem"><NavLink to="/pages/about">About</NavLink></li>
-            <li className="NavigationItem"><NavLink to="/pages/contacts">Contacts</NavLink></li>
-            <li className="NavigationItem"><NavLink to="/pages/divisions">Divisions</NavLink></li>
-            <li className="NavigationItem"><NavLink to="/pages/admin">Admin</NavLink></li>
+            {links.map(id => (
+                <li className="NavigationItem" key={id}><NavLink to={"/page/" + id} exact>{id.toUpperCase()}</NavLink></li>
+            ))}
+            <li className="NavigationItem" key="admin"><NavLink to="/page/admin">ADMIN</NavLink></li>
         </ul>
     );
 };
