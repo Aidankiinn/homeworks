@@ -1,23 +1,22 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch} from "react-router-dom";
-import Layout from "./components/UI/Layout/Layout";
-import EditPage from "./containers/EditPage/EditPage";
-import Content from "./components/Content/Content";
-import {links} from "./constants";
+import Layout from "./components/Layout/Layout";
+import {Route, Switch} from "react-router-dom";
+import NotFound from "./components/NotFound/NotFound";
+import {Container} from "@material-ui/core";
+import AddQuote from "./containers/AddQuote/AddQuote";
+import Quotes from "./containers/Quotes/Quotes";
 
 const App = () => (
-    <BrowserRouter>
-        <Layout>
+    <Layout>
+        <Container>
             <Switch>
-                <Route path="/" exact render={() => <h1>Welcome!</h1>}/>
-                <Route path="/page/admin" exact component={EditPage}/>
-                {links.map(item => (
-                    <Route path={"/page/" + item} component={Content}/>
-                ))}
-                <Route render={() => <h1>Not Found</h1>}/>
+                <Route path='/' exact component={Quotes}/>
+                <Route path='/quotes/:category' component={Quotes}/>
+                <Route path="/add-quote"  component={AddQuote}/>
+                <Route component={NotFound}/>
             </Switch>
-        </Layout>
-    </BrowserRouter>
+        </Container>
+    </Layout>
 );
 
 export default App;
