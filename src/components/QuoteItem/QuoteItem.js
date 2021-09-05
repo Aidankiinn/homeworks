@@ -7,7 +7,6 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-// if (Math.random() > 0.7) throw new Error('Well, this happened.');
 const getError = () => {
     throw new Error('Well, this happened');
 }
