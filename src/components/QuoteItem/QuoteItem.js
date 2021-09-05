@@ -1,5 +1,5 @@
 import React from 'react';
-import {makeStyles, Paper, Typography} from "@material-ui/core";
+import {Button, makeStyles, Paper, Typography} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
     quotePaper: {
@@ -7,6 +7,10 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+// if (Math.random() > 0.7) throw new Error('Well, this happened.');
+const getError = () => {
+    throw new Error('Well, this happened');
+}
 const QuoteItem = ({text, author}) => {
     const classes = useStyles();
 
@@ -18,6 +22,7 @@ const QuoteItem = ({text, author}) => {
             <Typography variant='subtitle1'>
                 {author}
             </Typography>
+            <Button onClick={getError} color={"primary"}>Click for an Error</Button>
         </Paper>
     );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Grid, makeStyles, Typography} from "@material-ui/core";
 import QuoteItem from "../QuoteItem/QuoteItem";
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 
 const useStyles = makeStyles((theme) => ({
     content: {
@@ -15,12 +16,14 @@ const QuoteContent = ({quotes, categoryTitle}) => {
     return (
         <main className={classes.content}>
             <Grid container direction='column' spacing={2}>
-                <Grid item >
+                <Grid item>
                     <Typography variant='h4'>{categoryTitle}</Typography>
                 </Grid>
                 {quotes.map(quote => (
                     <Grid item>
-                        <QuoteItem text={quote.text} author={quote.author}/>
+                        <ErrorBoundary>
+                            <QuoteItem text={quote.text} author={quote.author}/>
+                        </ErrorBoundary>
                     </Grid>
                 ))}
             </Grid>
