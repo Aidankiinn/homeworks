@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Button, Grid, makeStyles, MenuItem, Paper, TextField, Typography} from "@material-ui/core";
 import axiosApi from "../../axiosApi";
 import {CATEGORIES} from "../../constants";
+import withLoader from "../../hoc/withLoader";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -98,4 +99,4 @@ const AddQuote = ({history}) => {
     );
 };
 
-export default AddQuote;
+export default withLoader(AddQuote, axiosApi);
